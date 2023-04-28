@@ -1,0 +1,9 @@
+setup.py
+Spam_classifier.egg-info/PKG-INFO
+Spam_classifier.egg-info/SOURCES.txt
+Spam_classifier.egg-info/dependency_links.txt
+Spam_classifier.egg-info/requires.txt
+Spam_classifier.egg-info/top_level.txt
+source/__init__.py
+source/exception.py
+source/logger.py
