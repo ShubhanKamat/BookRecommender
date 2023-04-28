@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
+from source.exception import CustomException
+from source.logger import logging
 
 
 
@@ -52,23 +54,26 @@ def get_book_info(book_name):
 def app():
     st.title("Book Recommender system")
     st.write("Select a book from the dropdown menu to see similar books")
+    logging.info('user has selected the book')
+    try:
+        # Create dropdown menu of books
+        book_names = pivot_table.index.tolist()
+        selected_book = st.selectbox("Select a book", book_names)
 
-    # Create dropdown menu of books
-    book_names = pivot_table.index.tolist()
-    selected_book = st.selectbox("Select a book", book_names)
+        # Get similar books
+        similar_books = get_similar_books(selected_book)
 
-    # Get similar books
-    similar_books = get_similar_books(selected_book)
-
-    # Display similar books
-    st.write("Similar Books:")
-    for book in similar_books:
-        book_info = get_book_info(book)
-        st.write(f"Title: {book_info['Book-Title'].values[0]}")
-        st.write(f"Author: {book_info['Book-Author'].values[0]}")
-        st.write(f"Year of Publication: {book_info['Year-Of-Publication'].values[0]}")
-        st.write(f"Publisher: {book_info['Publisher'].values[0]}")
-        st.image(book_info['Image-URL-M'].values[0], width=100)
+        # Display similar books
+        st.write("Similar Books:")
+        for book in similar_books:
+            book_info = get_book_info(book)
+            st.write(f"Title: {book_info['Book-Title'].values[0]}")
+            st.write(f"Author: {book_info['Book-Author'].values[0]}")
+            st.write(f"Year of Publication: {book_info['Year-Of-Publication'].values[0]}")
+            st.write(f"Publisher: {book_info['Publisher'].values[0]}")
+            st.image(book_info['Image-URL-M'].values[0], width=100)
+    except Exception as e:
+        raise CustomException(e,sys)
 
 if __name__ == '__main__':
     app()
