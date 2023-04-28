@@ -64,7 +64,7 @@ def app():
         similar_books = get_similar_books(selected_book)
 
         # Display similar books
-        st.write("Similar Books:")
+        st.subheader("Similar Books:")
         for book in similar_books:
             book_info = get_book_info(book)
             st.write(f"Title: {book_info['Book-Title'].values[0]}")
