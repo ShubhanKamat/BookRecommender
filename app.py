@@ -7,9 +7,9 @@ from source.logger import logging
 
 
 # Load data
-df_books = pd.read_csv("books.csv", low_memory=False)
-df_ratings = pd.read_csv("ratings.csv")
-df_users = pd.read_csv("users.csv")
+df_books = pd.read_csv("Books.csv", low_memory=False)
+df_ratings = pd.read_csv("Ratings.csv")
+df_users = pd.read_csv("Users.csv")
 
 merged_df = pd.merge(df_books, df_ratings, on='ISBN')
 new_df = merged_df[['Book-Title', 'User-ID', 'Book-Rating']]
