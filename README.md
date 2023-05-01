@@ -1,7 +1,9 @@
-Book Recommender System
+##Book Recommender System
+
 This application is a book recommender system that recommends similar books to the user's selected book. The app is built using Streamlit, a Python library for building web apps for machine learning and data science. The app uses a k-nearest neighbors algorithm to find the top 5 most similar books to the user's selection.
 
-Installation
+##Installation
+
 To use this app, you need to have Python 3.8 or higher installed. You also need to have the following Python libraries installed:
 
 Streamlit
@@ -15,8 +17,8 @@ Once the app is running, you can select a book from the dropdown menu to see sim
 The app will display the top 5 most similar books to the user's selection, along with their title, author, year of publication, publisher, and an image of the book cover.
 
 App Workflow
-The app uses the following workflow to recommend similar books to the user's selection:
 
+The app uses the following workflow to recommend similar books to the user's selection:
 Load the dataset, which includes information about books, ratings, and users.
 Preprocess the data by filtering out users and books with too few ratings, creating a pivot table, and filling in missing values with zeros.
 Fit a k-nearest neighbors algorithm to the pivot table, using cosine similarity as the distance metric.
